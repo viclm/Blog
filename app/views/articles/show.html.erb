@@ -1,0 +1,33 @@
+<article class="article">
+    <header class="article-header">
+        <time class="article-time" datetime="<%= @article.created_at %>">
+            <span><%= @article.created_at.strftime('%A').upcase %></span>
+            <%= @article.created_at.strftime('%b. %d, %Y') %>
+        </time>
+        <hgroup><h1 class="article-title article-single-title"><%= @article.title %></h1></hgroup>
+    </header>
+    <div class="article-content"><%= raw BlueCloth.new(@article.content).to_html %></div>
+    <footer class="article-footer">
+        <span class="article-label">
+            <% @article.tag.split().each do |label| %>
+            <a href="/<%= label %>"><%= label.upcase %></a>
+            <% end %>
+        </span>
+    </footer>
+</article>
+<aside>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"closure"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+</aside>

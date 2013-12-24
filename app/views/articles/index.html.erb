@@ -1,0 +1,21 @@
+<% @articles.each do |article| %>
+<article class="article">
+    <header class="article-header">
+        <hgroup>
+            <h1 class="article-title"><%= link_to article.title, article %></h1>
+        </hgroup>
+    </header>
+    <div class="article-content">
+        <%= raw BlueCloth.new(article.content[0..500].reverse.sub(/^[^。\r\n]+/, '').reverse).to_html %>
+        <%= link_to '继续阅读', article, class: "article-continue" %>
+    </div>
+    <footer class="article-footer">
+        <time class="article-time" datetime="<%= article.created_at %>"><%= article.created_at.strftime('%b %d %Y') %></time>
+        <span class="article-label">
+            <% article.tag.split().each do |label| %>
+            <a href="/<%= label %>"><%= label.upcase %></a>
+            <% end %>
+        </span>
+    </footer>
+</article>
+<% end %>

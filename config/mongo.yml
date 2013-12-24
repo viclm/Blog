@@ -1,0 +1,21 @@
+defaults: &defaults
+  #host: dbh84.mongolab.com
+  #port: 27847
+  uri: <%= ENV['MONGOHQ_URI'] %>
+  #options:
+  #  w: 1
+  #  pool_size: 1
+  #  slave_ok: false
+  #  ssl: false
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  database: kaka_test
+  w: 0
+
+# set these environment variables on your prod server
+production:
+  <<: *defaults

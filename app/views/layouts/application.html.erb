@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>程序员的八卦</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header id="header">
+    <h1 id="home"><a href="/">程序员的八卦</a></h1>
+    <nav id="navigation">
+      <ul>
+        <li><a href="https://github.com/viclm" target="_blank">Github</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="main">
+    <%= yield %>
+  </section>
+  <footer id="footer">
+    <section class="links">
+      <h2>友情链接</h2>
+      <ul>
+        <li><a href="http://leechan.me/" target="_blank">李陈的猜想</a></li>
+      </ul>
+    </section>
+    <p class="copyright">Copyright © 2013 Ming Liu <br>Some rights reserved</p>
+  </footer>
+</body>
+</html>
