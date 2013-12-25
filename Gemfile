@@ -10,6 +10,7 @@ gem 'mongo_mapper', :git => 'git://github.com/mongomapper/mongomapper.git', :tag
 gem 'bson_ext', '~> 1.9.2'
 gem 'bluecloth', '~> 2.2.0'
 gem 'rails_12factor', group: :production
+gem 'unicorn'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
