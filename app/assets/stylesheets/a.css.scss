@@ -78,13 +78,21 @@ code {
 
 #header {
   position: fixed;
-  left: 50px;
-  top: 50px;
+  left: 70px;
+  top: 70px;
   #home {
     font-size: 1.2em;
     font-weight: normal;
     a {
       border: none;
+      background: url(/assets/skin.png) no-repeat;
+      background-size: 30px 68px;
+      padding-left: 35px;
+      margin-left: -35px;
+      display: block;
+      &:hover, &:focus {
+        background-position: 0 -40px;
+      }
     }
   }
   #navigation {
@@ -205,6 +213,24 @@ code {
         margin-left: 0.5em;
       }
     }
+  }
+}
+
+.more-articles {
+  display: block;
+  margin: 2em 0 2em 30%;
+  padding: 1em 2em;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1em;
+  letter-spacing: 0.5em;
+  color: #1f1e1d;
+  background-color: #f0f0f0;
+  border: none;
+  @include border-radius(3px);
+  &:hover, &:focus {
+    background-color: #1f1e1d;
+    color: #ffffff;
   }
 }
 

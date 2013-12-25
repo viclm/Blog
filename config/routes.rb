@@ -15,6 +15,8 @@ Kaka::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :articles
 
+  get '/page/:page' => 'articles#index'
+
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -19,3 +19,6 @@
     </footer>
 </article>
 <% end %>
+<% if @older > 0 %>
+  <a class="more-articles" href="/page/<%= @older %>">更旧的文章</a>
+<% end %>
