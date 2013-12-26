@@ -1,0 +1,14 @@
+<div class="grid">
+    <div class="article-edit">
+    <%= form_for :article, :url => articles_path() do |f| %>
+        <p><%= f.text_area :content, :value => '' %></p>
+        <p><%= f.text_field :title, :placeholder => 'Title', :value => '' %></p>
+        <p><%= f.text_field :urlrewrite, :placeholder => 'Friendly url', :value => '' %></p>
+        <p><%= f.text_field :tag, :placeholder => 'Tag', :value => '' %></p>
+        <p><%= f.submit %></p>
+    <% end %>
+    </div>
+</div>
+<div class="grid">
+    <div class="article-preview"></div>
+</div>

@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name + '-' + action_name %>">
   <header id="header">
     <h1 id="home"><a href="/">程序员的八卦</a></h1>
     <nav id="navigation">
