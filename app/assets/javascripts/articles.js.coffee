@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ($) ->
   $('body.articles-edit, body.articles-new').each ->
+    articleEdit = $('#article_content')
     articlePreview = $('.article-preview')
-    $('#article_content').on 'input', ->
+    articleEdit.on 'input', ->
       articlePreview.html marked @value
+    articleEdit.trigger 'input'
