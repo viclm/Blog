@@ -13,7 +13,7 @@
         <time class="article-time" datetime="<%= article.created_at %>"><%= article.created_at.strftime('%b %d %Y') %></time>
         <span class="article-label">
             <% article.tag.split().each do |label| %>
-            <a href="/<%= label %>"><%= label.upcase %></a>
+            <a href="/articles/tag/<%= label %>"><%= label.upcase %></a>
             <% end %>
         </span>
     </footer>

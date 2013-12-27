@@ -1,6 +1,6 @@
 <div class="grid">
     <div class="article-edit">
-    <%= form_for :article do |f| %>
+    <%= form_for @article, :url => {action: 'update'}, :html => {method: 'patch'} do |f| %>
         <p><%= f.text_area :content, :value => @article.content %></p>
         <p><%= f.text_field :title, :placeholder => 'Title', :value => @article.title %></p>
         <p><%= f.text_field :urlrewrite, :placeholder => 'Friendly url', :value => @article.urlrewrite %></p>
