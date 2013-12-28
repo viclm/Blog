@@ -109,6 +109,36 @@
   }
 }
 
+.articles-search {
+  h1 {
+    font-size: 2em;
+    span {
+      font-size: 0.5em;
+      margin-left: 0.5em;
+      font-weight: normal;
+    }
+  }
+  ol {
+    list-style-type: none;
+    padding: 0;
+    li a {
+      display: block;
+      padding: 0.5em 0;
+      position: relative;
+      font-size: 1.3em;
+      &:hover, &:focus {
+        background-color: #f0f0f0;
+        border: none;
+      }
+      .article-time {
+        position: absolute;
+        right: 0;
+        color: $textgreycolor;
+      }
+    }
+  }
+}
+
 
 .articles-edit #header,
 .articles-new #header,

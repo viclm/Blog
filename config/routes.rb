@@ -16,6 +16,7 @@ Kaka::Application.routes.draw do
   resources :articles
 
   get '/page/:page' => 'articles#index'
+  get '/articles/tag/:tag' => 'articles#search'
 
   # Example resource route with options:
   #   resources :products do

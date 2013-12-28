@@ -10,7 +10,7 @@
         <%= link_to '继续阅读', article, class: "article-continue" %>
     </div>
     <footer class="article-footer">
-        <time class="article-time" datetime="<%= article.created_at %>"><%= article.created_at.strftime('%b %d %Y') %></time>
+        <time class="article-time" datetime="<%= article.created_at %>"><%= article.created_at.strftime('%b. %d, %Y') %></time>
         <span class="article-label">
             <% article.tag.split().each do |label| %>
             <a href="/articles/tag/<%= label %>"><%= label.upcase %></a>

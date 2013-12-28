@@ -4,13 +4,30 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    p = if params[:page] then params[:page].to_i else 1 end
+    page = if params[:page] then params[:page].to_i else 1 end
     @articles = Article.paginate({
       :order    => :created_at.desc,
       :per_page => 5,
-      :page     => p
+      :page     => page
     })
-    @older = @articles.size == 5 ? p + 1 : 0
+
+    @older = @articles.count == 5 ? page + 1 : 0
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @articles }
+    end
+  end
+
+  def search
+    tag = params[:tag]
+    keyword = params[:keyword]
+
+    if tag
+      @articles = Article.where(:tag => Regexp.new(tag, 'i')).sort(:created_at.desc)
+    elsif keyword
+      @articles = Article.where(:title => Regexp.new(keyword, 'i')).sort(:created_at.desc)
+    end
 
     respond_to do |format|
       format.html

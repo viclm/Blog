@@ -170,12 +170,15 @@ input[type=submit], button {
   }
 }
 
-#main, #footer {
+#main {
   margin: 2em auto;
   width: 600px;
+  min-height: 800px;
 }
 
 #footer {
+  margin: 2em auto;
+  width: 600px;
   .copyright {
     color: $decorategreycolor;
   }

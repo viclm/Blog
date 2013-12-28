@@ -1,0 +1,16 @@
+<div class="articles-search">
+<header>
+    <hgroup>
+        <h1 class="article-title"><%= (params[:tag]).upcase %><span>相关的文章</span></h1>
+    </hgroup>
+</header>
+<ol>
+    <% @articles.each do |article| %>
+    <li>
+    <a class="article-title" href="<%= article_path(article) %>" ><%= article.title %>
+    <time class="article-time" datetime="<%= article.created_at %>"><%= article.created_at.strftime('%b. %d, %Y') %></time>
+    </a>
+    </li>
+    <% end %>
+</ol>
+</div>
