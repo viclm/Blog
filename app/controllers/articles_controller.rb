@@ -1,6 +1,25 @@
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: ENV['USERNAME'], password: ENV['PASSWORD'], except: [:index, :show, :search]
+  http_basic_authenticate_with name: ENV['USERNAME'], password: ENV['PASSWORD'], except: [:index, :show, :search, :text]
+
+  before_filter :cors_preflight_check, only: [:show]
+  after_filter :cors_set_access_control_headers, only: [:show]
+  skip_before_filter :verify_authenticity_token, only: [:show]
+
+  def cors_preflight_check
+    print request.method
+    if request.method == 'OPTIONS' and request.headers['ORIGIN'] =~ /jquery.com/
+      headers['Access-Control-Allow-Origin'] = request.headers['ORIGIN']
+      headers['Access-Control-Allow-Methods'] = 'GET'
+      headers['Access-Control-Allow-Headers'] = 'accept, origin, x-requested-with, content-type'
+      headers['Access-Control-Max-Age'] = '1728000'
+      render :text => '', :content_type => 'text/plain'
+    end
+  end
+
+  def cors_set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = request.headers['ORIGIN']
+  end
 
   # GET /articles
   def index
@@ -57,6 +76,17 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   def show
     @article = Article.first :urlrewrite => params[:id]
+    respond_to do |format|
+      format.html
+      format.json { render :json => @article }
+      format.js { render :json => @article, :callback => params[:callback] }
+    end
+  end
+
+  def text
+    @article = Article.first :urlrewrite => params[:id]
+    headers['Access-Control-Allow-Origin'] = '*'
+    render :text => @article.content
   end
 
   # GET /articles/1/edit
