@@ -6,7 +6,7 @@
         </time>
         <hgroup><h1 class="article-title article-single-title"><%= @article.title %></h1></hgroup>
     </header>
-    <div class="article-content"><%= raw BlueCloth.new(@article.content).to_html %></div>
+    <div class="article-content"><%= raw RDiscount.new(@article.content).to_html %></div>
     <footer class="article-footer">
         <span class="article-label">
             <% @article.tag.split().each do |label| %>

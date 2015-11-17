@@ -6,7 +6,7 @@
         </hgroup>
     </header>
     <div class="article-content">
-        <%= raw BlueCloth.new(article.content[0..500].reverse.sub(/^[^。\r\n]+/, '').reverse).to_html %>
+        <%= raw RDiscount.new(article.content[0..500].reverse.sub(/^[^。\r\n]+/, '').reverse).to_html %>
         <%= link_to '继续阅读', article, class: "article-continue" %>
     </div>
     <footer class="article-footer">

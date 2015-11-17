@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   def index
     page = if params[:page] then params[:page].to_i else 1 end
-    @articles = Article.paginate({
+    @articles = Article.where(:tag.ne => 'secret').paginate({
       :order    => :created_at.desc,
       :per_page => 5,
       :page     => page
